@@ -54,7 +54,6 @@ Route::prefix('admin')->group(function () {
   Route::get('book', [BooksController::class,'index']);
   Route::get('add-book', [BooksController::class,'add']);
   Route::post('add-book', [BooksController::class,'create']);
-  Route::get('edit-book/{id}', [BooksController::class,'edit']);
-  Route::post('edit-book/{id}', [BooksController::class,'update']);
-  Route::get('delete-book/{id}', [BooksController::class,'delete']);
+  Route::get('add-book', [BooksController::class,'add']);
+  Route::post('add-book', [BooksController::class,'create']);
 });
