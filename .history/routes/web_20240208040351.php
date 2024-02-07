@@ -78,6 +78,6 @@ Route::group(['prefix'=>'admin','middleware' => ['admin']],function () {
 });
 
 //USER
-Route::middleware('user')->get('/user/home', function () {
-  return view('user.layouts.main');
+Route::middleware('admin')->get('/admin/home', function () {
+  return view('admin.functions.dashboard');
 });

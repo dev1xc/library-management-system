@@ -32,11 +32,11 @@ class LoginController extends Controller
     $role = Auth::user()->level;
     // Check user role
     switch ($role) {
-      case 1:
-        return '/admin/home';
+      case '1':
+        return '/dashboard';
         break;
-      case 0:
-        return '/user/home';
+      case 'Employee':
+        return '/projects';
         break;
       default:
         return '/login';

@@ -77,7 +77,12 @@ Route::group(['prefix'=>'admin','middleware' => ['admin']],function () {
   Route::get('delete-book-language/{id}', [BookLanguageController::class, 'delete']);
 });
 
-//USER
-Route::middleware('user')->get('/user/home', function () {
-  return view('user.layouts.main');
+
+Route::group(['prefix'=>'user'],function () {
+  Route::get('book-language', [BookLanguageController::class, 'index']);
+  Route::get('add-book-language', [BookLanguageController::class, 'add']);
+  Route::post('add-book-language', [BookLanguageController::class, 'create']);
+  Route::get('edit-book-language/{id}', [BookLanguageController::class, 'edit']);
+  Route::post('edit-book-language/{id}', [BookLanguageController::class, 'update']);
+  Route::get('delete-book-language/{id}', [BookLanguageController::class, 'delete']);
 });

@@ -77,7 +77,7 @@ Route::group(['prefix'=>'admin','middleware' => ['admin']],function () {
   Route::get('delete-book-language/{id}', [BookLanguageController::class, 'delete']);
 });
 
-//USER
-Route::middleware('user')->get('/user/home', function () {
-  return view('user.layouts.main');
+
+Route::middleware('admin')->get('/admin/home', function () {
+  return view('admin.functions.dashboard');
 });

@@ -33,10 +33,10 @@ class LoginController extends Controller
     // Check user role
     switch ($role) {
       case 1:
-        return '/admin/home';
+        return '/dashboard';
         break;
-      case 0:
-        return '/user/home';
+      case 'Employee':
+        return '/projects';
         break;
       default:
         return '/login';
