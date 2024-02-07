@@ -21,7 +21,10 @@
               <li class="breadcrumb-item">
                 <a href="/admin/home">Home</a>
               </li>
-              <li class="breadcrumb-item active" aria-current="page">Profile</li>
+              <li class="breadcrumb-item">
+                <a href="/admin/user">User</a>
+              </li>
+              <li class="breadcrumb-item active" aria-current="page">Add-User</li>
             </ol>
           </nav>
         </div>
@@ -41,27 +44,9 @@
     <!-- Row -->
     <div class="row">
       <!-- Column -->
-      <div class="col-lg-4 col-xlg-3 col-md-5">
-        <div class="card">
-          <div class="card-body">
-            <center class="m-t-30"> <img src="{{ url('/upload/user/avatar/' . $data->image) }}" class="rounded-circle"
-                width="150" />
-              <h4 class="card-title m-t-10">{{ $data->name }}</h4>
-            </center>
-          </div>
-          <div>
-            <hr>
-          </div>
-          <div class="card-body"> <small class="text-muted">Email address </small>
-            <h6>{{ $data->email }}</h6> <small class="text-muted p-t-30 db">Phone</small>
-            <h6>{{ $data->phone }}</h6> <small class="text-muted p-t-30 db">Address</small>
-            <h6>{{ $data->country }}</h6>
-          </div>
-        </div>
-      </div>
       <!-- Column -->
       <!-- Column -->
-      <div class="col-lg-8 col-xlg-9 col-md-7">
+      <div class="col-lg-10 col-xlg-10 col-md-7">
         <div class="card">
           <div class="card-body">
             <form class="form-horizontal form-material" method="post" enctype="multipart/form-data">
@@ -69,20 +54,27 @@
               <div class="form-group">
                 <label class="col-md-12">Full Name</label>
                 <div class="col-md-12">
-                  <input type="text" value="{{ $data->name }}" class="form-control form-control-line" name="name">
+                  <input type="text" value="" class="form-control form-control-line" name="name">
                 </div>
               </div>
               <div class="form-group">
                 <label for="example-email" class="col-md-12">Email</label>
                 <div class="col-md-12">
-                  <input type="email" value="{{ $data->email }}" class="form-control form-control-line" name="email"
-                    id="example-email" readonly="true">
+                  <input type="email" value="" class="form-control form-control-line" name="email"
+                    id="example-email">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="password" class="col-md-12">Password</label>
+                <div class="col-md-12">
+                  <input type="password" value="" class="form-control form-control-line" name="password"
+                    id="password">
                 </div>
               </div>
               <div class="form-group">
                 <label for="phone" class="col-md-12">Phone</label>
                 <div class="col-md-12">
-                  <input type="text" value="{{ $data->phone }}" class="form-control form-control-line" name="phone"
+                  <input type="text" value="" class="form-control form-control-line" name="phone"
                     id="phone">
                 </div>
               </div>
@@ -91,9 +83,9 @@
                 <div class="col-md-12">
                   <select class="col-12" name="gender" id="gender">
                     <option value="">Chose gender</option>
-                    <option value="nam" @if ($data->gender == 'nam') @selected(true) @endif>Male
+                    <option value="nam">Male
                     </option>
-                    <option value="nu" @if ($data->gender == 'nu') @selected(true) @endif>Female
+                    <option value="nu">Female
                     </option>
                   </select>
                 </div>
@@ -101,24 +93,24 @@
               <div class="form-group">
                 <label for="country" class="col-md-12">Country</label>
                 <div class="col-md-12">
-                  <input type="text" value="{{ $data->country }}" class="form-control form-control-line"
+                  <input type="text" value="" class="form-control form-control-line"
                     name="country" id="country">
                 </div>
               </div>
               <div class="form-group">
                 <label for="image" class="col-md-12">Image</label>
                 <div class="col-md-12">
-                  <input type="file" value="{{ $data->image }}" class="form-control form-control-line"
+                  <input type="file" value="" class="form-control form-control-line"
                     name="image" id="image">
                 </div>
               </div>
               <div class="form-group">
                 <label for="level" class="col-md-12">Level</label>
                 <div class="col-md-12">
-                  <select class="col-12" name="level" id="gender">
-                    <option value="0" @if ($data->level == '0') @selected(true) @endif>User
+                  <select class="col-12" name="gender" id="gender">
+                    <option value="0">User
                     </option>
-                    <option value="1" @if ($data->level == '1') @selected(true) @endif>Admin
+                    <option value="nu">Admin
                     </option>
                   </select>
                 </div>

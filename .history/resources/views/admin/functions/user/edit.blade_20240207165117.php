@@ -116,9 +116,9 @@
                 <label for="level" class="col-md-12">Level</label>
                 <div class="col-md-12">
                   <select class="col-12" name="level" id="gender">
-                    <option value="0" @if ($data->level == '0') @selected(true) @endif>User
+                    <option value="0" @if ($data->level == '0') @selected(true) @endif>Male
                     </option>
-                    <option value="1" @if ($data->level == '1') @selected(true) @endif>Admin
+                    <option value="1">Admin
                     </option>
                   </select>
                 </div>

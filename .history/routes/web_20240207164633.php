@@ -26,7 +26,7 @@ Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 Route::get('/admin/home', function () {
   return view('admin.functions.dashboard');
 });
-Route::get('/admin/dashboard', function () {
+Route::get('/admin/home', function () {
   return view('admin.functions.dashboard');
 });
 Route::prefix('admin')->group(function () {

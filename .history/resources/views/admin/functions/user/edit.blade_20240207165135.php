@@ -118,7 +118,7 @@
                   <select class="col-12" name="level" id="gender">
                     <option value="0" @if ($data->level == '0') @selected(true) @endif>User
                     </option>
-                    <option value="1" @if ($data->level == '1') @selected(true) @endif>Admin
+                    <option value="1" @if ($data->level == '0') @selected(true) @endif>User
                     </option>
                   </select>
                 </div>
