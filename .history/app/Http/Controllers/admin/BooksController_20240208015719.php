@@ -22,8 +22,9 @@ class BooksController extends Controller
   }
   public function add()
   {
-    $data = Category::all();
-    return view("admin.functions.book.add", compact("data"));
+    $dataCategory = Category::all();
+    $dataPublisher = Publisher::all();
+    return view("admin.functions.book.add", compact("dataCategory"));
   }
   public function create(Request $request)
   {

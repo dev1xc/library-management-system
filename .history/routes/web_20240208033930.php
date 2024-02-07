@@ -1,0 +1,78 @@
+<?php
+
+use App\Http\Controllers\admin\BookController;
+use App\Http\Controllers\admin\BookLanguageController;
+use App\Http\Controllers\admin\CategoryController;
+use App\Http\Controllers\admin\ProfileController;
+use App\Http\Controllers\admin\PublisherController;
+use App\Http\Controllers\admin\UserController;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider and all of them will
+| be assigned to the "web" middleware group. Make something great!
+|
+*/
+
+Route::get('/', function () {
+  return view('welcome');
+});
+Auth::routes();
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
+Route::group(['get'=>['/admin/home']], function () {
+  return view('admin.functions.dashboard');
+});
+Route::get('/admin/dashboard', function () {
+  return view('admin.functions.dashboard');
+});
+Route::group(['prefix'=>'admin','middleware' => ['admin']], function () {
+  Route::get('category', [CategoryController::class, 'index']);
+  Route::get('add-category', [CategoryController::class, 'add']);
+  Route::post('add-category', [CategoryController::class, 'create']);
+  Route::get('edit-category/{id}', [CategoryController::class, 'edit']);
+  Route::post('edit-category/{id}', [CategoryController::class, 'update']);
+  Route::get('delete-category/{id}', [CategoryController::class, 'delete']);
+});
+Route::group(['prefix'=>'admin','middleware' => ['admin']],function () {
+  Route::get('profile', [ProfileController::class, 'index']);
+  Route::post('profile', [ProfileController::class, 'edit']);
+});
+Route::group(['prefix'=>'admin','middleware' => ['admin']],function () {
+  Route::get('user', [UserController::class, 'index']);
+  Route::get('add-user', [UserController::class, 'add']);
+  Route::post('add-user', [UserController::class, 'create']);
+  Route::get('edit-user/{id}', [UserController::class, 'edit']);
+  Route::post('edit-user/{id}', [UserController::class, 'update']);
+  Route::get('delete-user/{id}', [UserController::class, 'delete']);
+});
+Route::group(['prefix'=>'admin','middleware' => ['admin']],function () {
+  Route::get('book', [BookController::class, 'index']);
+  Route::get('add-book', [BookController::class, 'add']);
+  Route::post('add-book', [BookController::class, 'create']);
+  Route::get('edit-book/{id}', [BookController::class, 'edit']);
+  Route::post('edit-book/{id}', [BookController::class, 'update']);
+  Route::get('delete-book/{id}', [BookController::class, 'delete']);
+});
+Route::group(['prefix'=>'admin','middleware' => ['admin']],function () {
+  Route::get('publisher', [PublisherController::class, 'index']);
+  Route::get('add-publisher', [PublisherController::class, 'add']);
+  Route::post('add-publisher', [PublisherController::class, 'create']);
+  Route::get('edit-publisher/{id}', [PublisherController::class, 'edit']);
+  Route::post('edit-publisher/{id}', [PublisherController::class, 'update']);
+  Route::get('delete-publisher/{id}', [PublisherController::class, 'delete']);
+});
+Route::group(['prefix'=>'admin','middleware' => ['admin']],function () {
+  Route::get('book-language', [BookLanguageController::class, 'index']);
+  Route::get('add-book-language', [BookLanguageController::class, 'add']);
+  Route::post('add-book-language', [BookLanguageController::class, 'create']);
+  Route::get('edit-book-language/{id}', [BookLanguageController::class, 'edit']);
+  Route::post('edit-book-language/{id}', [BookLanguageController::class, 'update']);
+  Route::get('delete-book-language/{id}', [BookLanguageController::class, 'delete']);
+});
