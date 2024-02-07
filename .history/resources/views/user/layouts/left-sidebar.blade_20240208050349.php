@@ -11,7 +11,7 @@
           </a>
         </li>
         <li class="sidebar-item">
-          <a class="sidebar-link sidebar-link" href="/user/borrow-book" aria-expanded="false">
+          <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/user/borrow-book" aria-expanded="false">
             <i class="mdi mdi-account-network"></i>
             <span class="hide-menu">Borrow Books</span>
           </a>

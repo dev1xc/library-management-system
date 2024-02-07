@@ -38,7 +38,7 @@
   <!-- ============================================================== -->
   <!-- Main wrapper - style you can find in pages.scss -->
   <!-- ============================================================== -->
-  <div id="main-wrapper" data-navbarbg="skin6" data-theme="light" data-layout="vertical" data-sidebartype="full"
+  <div id="main-wrapper" data-navbarbg="skin6" data-theme="dark" data-layout="vertical" data-sidebartype="full"
     data-boxed-layout="full">
     <!-- ============================================================== -->
     <!-- Topbar header - style you can find in pages.scss -->

@@ -6,7 +6,6 @@ use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\admin\ProfileController;
 use App\Http\Controllers\admin\PublisherController;
 use App\Http\Controllers\admin\UserController;
-use App\Http\Controllers\user\UserBorrowBookController;
 use App\Http\Controllers\user\UserProfileController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -91,6 +90,10 @@ Route::group(['prefix'=>'user','middleware' => ['user']],function () {
   Route::post('profile', [UserProfileController::class, 'edit']);
 });
 Route::group(['prefix'=>'user','middleware' => ['user']],function () {
-  Route::get('borrow-book', [UserBorrowBookController::class, 'index']);
-  Route::get('book/{id}',[UserBorrowBookController::class,'detail']);
+  Route::get('book-language', [BookLanguageController::class, 'index']);
+  Route::get('add-book-language', [BookLanguageController::class, 'add']);
+  Route::post('add-book-language', [BookLanguageController::class, 'create']);
+  Route::get('edit-book-language/{id}', [BookLanguageController::class, 'edit']);
+  Route::post('edit-book-language/{id}', [BookLanguageController::class, 'update']);
+  Route::get('delete-book-language/{id}', [BookLanguageController::class, 'delete']);
 });

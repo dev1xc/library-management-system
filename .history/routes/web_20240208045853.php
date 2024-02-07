@@ -6,7 +6,7 @@ use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\admin\ProfileController;
 use App\Http\Controllers\admin\PublisherController;
 use App\Http\Controllers\admin\UserController;
-use App\Http\Controllers\user\UserBorrowBookController;
+use App\Http\Controllers\user\UseBorrowBookController;
 use App\Http\Controllers\user\UserProfileController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -92,5 +92,5 @@ Route::group(['prefix'=>'user','middleware' => ['user']],function () {
 });
 Route::group(['prefix'=>'user','middleware' => ['user']],function () {
   Route::get('borrow-book', [UserBorrowBookController::class, 'index']);
-  Route::get('book/{id}',[UserBorrowBookController::class,'detail']);
+  Route::get('book/{id}',Use)
 });

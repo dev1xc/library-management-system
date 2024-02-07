@@ -1,4 +1,3 @@
-
 @extends('user.layouts.main')
 @section('content')
 <div class="page-breadcrumb">

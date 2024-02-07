@@ -92,5 +92,5 @@ Route::group(['prefix'=>'user','middleware' => ['user']],function () {
 });
 Route::group(['prefix'=>'user','middleware' => ['user']],function () {
   Route::get('borrow-book', [UserBorrowBookController::class, 'index']);
-  Route::get('book/{id}',[UserBorrowBookController::class,'detail']);
+  Route::get('book/{id}',[UserBorrowBookController::class,'edit']);
 });

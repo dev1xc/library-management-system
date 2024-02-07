@@ -1,5 +1,5 @@
 
-@extends('user.layouts.main')
+@extends('admin.layouts.main')
 @section('content')
 <div class="page-breadcrumb">
     <div class="row">
