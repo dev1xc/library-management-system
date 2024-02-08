@@ -69,11 +69,11 @@ class BorrowBookController extends Controller
       $inventory1 = Book::where('id', $ids[0])->value('inventory');
       $inventory2 = Book::where('id', $ids[1])->value('inventory');
       Book::where('id', $ids[0])->update(['inventory'=>$inventory1+1]);
-      Book::where('id', $ids[1])->update(['inventory'=>$inventory2+1]);
+      Book::where('id', $ids[1])->update(['inventory'=>$inventory2-1]);
     }elseif(count($ids) == 1){
-      $inventory1 = Book::where('id', $ids[0])->value('inventory');Book::where('id', $ids[0])->update(['inventory'=>$inventory1+1]);
+      $inventory1 = Book::where('id', $ids[0])->value('inventory');Book::where('id', $ids[0])->update(['inventory'=>$inventory1-1]);
     }
-    BorrowDetail::where('id', $id)->update(['status' => 2]);
+    BorrowDetail::where('id', $id)->update(['status' => 1]);
     return back()->with('success', 'Refund Success');
   }
 }

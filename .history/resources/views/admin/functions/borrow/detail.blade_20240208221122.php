@@ -43,7 +43,7 @@
         <a href="/admin/borrow-confirm/{{ $dataBorrow->id }}" class="btn btn-success">Confirm</a>
         @elseif ($dataBorrow->status == 1)
         <div class="alert alert-info">Borrowing</div>
-        <a href="/admin/borrow-confirm-refund/{{ $dataBorrow->id }}" class="btn btn-success">Confirm Refund</a>
+        <a href="/admin/borrow-confirm-refund/{{ $dataBorrow->id }}" class="btn btn-success">Confirm</a>
         @elseif ($dataBorrow->status == 2)
         <div class="alert alert-success">Refund</div>
         @endif

@@ -51,29 +51,14 @@ class BorrowBookController extends Controller
     $dataBorrow = BorrowDetail::findOrFail($id);
     $ids = explode('|', $dataBorrow['id_book']);
     if(count($ids) == 2){
-      $inventory1 = Book::where('id', $ids[0])->value('inventory');
-      $inventory2 = Book::where('id', $ids[1])->value('inventory');
+      $inventory1 = Book::where('id', $ids[0])->get('inventory');
+      $inventory2 = Book::where('id', $ids[1])->get('inventory');
       Book::where('id', $ids[0])->update(['inventory'=>$inventory1-1]);
       Book::where('id', $ids[1])->update(['inventory'=>$inventory2-1]);
     }elseif(count($ids) == 1){
-      $inventory1 = Book::where('id', $ids[0])->value('inventory');Book::where('id', $ids[0])->update(['inventory'=>$inventory1-1]);
+      $inventory1 = Book::where('id', $ids[0])->get('inventory');Book::where('id', $ids[0])->update(['inventory'=>$inventory1-1]);
     }
     BorrowDetail::where('id', $id)->update(['status' => 1]);
     return back()->with('success', 'Confirm Success');
-  }
-  public function refund($id)
-  {
-    $dataBorrow = BorrowDetail::findOrFail($id);
-    $ids = explode('|', $dataBorrow['id_book']);
-    if(count($ids) == 2){
-      $inventory1 = Book::where('id', $ids[0])->value('inventory');
-      $inventory2 = Book::where('id', $ids[1])->value('inventory');
-      Book::where('id', $ids[0])->update(['inventory'=>$inventory1+1]);
-      Book::where('id', $ids[1])->update(['inventory'=>$inventory2+1]);
-    }elseif(count($ids) == 1){
-      $inventory1 = Book::where('id', $ids[0])->value('inventory');Book::where('id', $ids[0])->update(['inventory'=>$inventory1+1]);
-    }
-    BorrowDetail::where('id', $id)->update(['status' => 2]);
-    return back()->with('success', 'Refund Success');
   }
 }
