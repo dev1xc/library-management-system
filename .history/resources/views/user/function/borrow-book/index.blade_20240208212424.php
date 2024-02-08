@@ -65,7 +65,7 @@
       <!-- Column -->
       <!-- Column -->
     @endforeach
-  </div class='float-right'>
+  </div class='justify-content-end'>
     {{ $dataBook->links() }}
   </div>
 @endsection

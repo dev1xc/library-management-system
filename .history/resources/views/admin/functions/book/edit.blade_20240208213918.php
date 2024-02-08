@@ -43,9 +43,9 @@
     <!-- ============================================================== -->
     <!-- Row -->
     @if (session('success'))
-      <div class="alert alert-success">{{ session('success') }}</div>
+      <div class="alert alert-success">{{ $session('success') }}</div>
     @elseif(session('error'))
-      <div class="alert alert-danger">{{ session('error') }}</div>
+
     @endif
     <div class="row">
       <div class="col-lg-4 col-xlg-3 col-md-5">
@@ -210,6 +210,7 @@
                         <button class="btn btn-success" type="submit">Update Profile</button>
                       </div>
                     </div>
+
             </form>
           </div>
         </div>

@@ -104,5 +104,4 @@ Route::group(['prefix'=>'user','middleware' => ['user']],function () {
   Route::get('delete-book/{id}', [UserBorrowBookController::class, 'deleteBook']);
   Route::get('borrow-book', [UserBorrowBookController::class, 'borrowAll']);
   Route::get('history', [UserBorrowBookController::class, 'history']);
-  Route::get('history-detail/{id}', [UserBorrowBookController::class, 'getDetail']);
 });

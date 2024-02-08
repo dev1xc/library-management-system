@@ -1,8 +1,7 @@
-@extends('user.layouts.main')
+@extends('admin.layouts.main')
 @section('content')
   @php
     $count = 1;
-    $data = session()->get('borrow-detail');
   @endphp
   <script>
     function deleteBook() {
@@ -37,10 +36,15 @@
   <!-- ============================================================== -->
 
   <div class="container-fluid">
-        @if (session('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
-        </div>
+    @if (session('success'))
+      <div class="alert alert-success">{{ session('success') }}</div>
+    @endif
+        @if ($dataBorrow->status == 0)
+        <a href="/admin/borrow-confirm/{{ $dataBorrow->id }}" class="btn btn-success">Confirm</a>
+        @elseif ($dataBorrow->status == 1)
+        <div class="alert alert-info">Borrowing</div>
+        @elseif ($dataBorrow->status == 2)
+        <div class="alert alert-success">Refund</div>
         @endif
     <!-- ============================================================== -->
     <!-- Start Page Content -->
@@ -54,39 +58,36 @@
                 <thead>
                   <tr>
                     <th scope="col">Ordinal Number</th>
-                    <th scope="col">Image</th>
+                    <th scope="col">Id</th>
                     <th scope="col">Name</th>
+                    <th scope="col">Image</th>
                     <th scope="col">Price</th>
-                    <th scope="col">Delete</th>
                   </tr>
                 </thead>
                 <tbody>
-                  @if ($data)
                   @foreach ($data as $c)
-                  <tr id="{{ $count}}">
-                    <th>{{ $count++ }}</th>
-                    <td>{{ $c['book_image'] }}</td>
-                    <td>{{ $c['book_name'] }}</td>
-                    <td>{{ $c['book_price'] }}</td>
-                    <td class="delete"><a href="/user/delete-book/{{ $c['id_book'] }}"
-                        onclick="return deleteBook()">Delete</a></td>
-                  </tr>
-                @endforeach
-                  @else
-                    DONT HAVE ANY BOOK YET
-                  @endif
-
+                    <tr id="{{ $c['id'] }}">
+                      <th>{{ $count++ }}</th>
+                      <th scope="row">{{ $c->id }}</th>
+                      <td>
+                        {{ $c->name }}
+                      </td>
+                      <td>
+                        <img src="{{ asset('upload/book/image/' . $c->image) }}" alt="{{ $c->image }}" height="100px"
+                          width="100px">
+                      </td>
+                      <td>
+                        {{ $c->price }}
+                      </td>
+                    </tr>
+                  @endforeach
                 </tbody>
               </table>
-
             </div>
-            @if ($data)
-            <a href="/user/borrow-book" class="btn btn-success float-right">Borrow</a>
-            @endif
           </div>
         </div>
       </div>
     </div>
-
+    {{-- {{ $dataS->links() }} --}}
   </div>
 @endsection

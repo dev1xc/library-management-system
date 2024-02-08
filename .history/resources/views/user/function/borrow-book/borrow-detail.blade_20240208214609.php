@@ -80,7 +80,7 @@
               </table>
 
             </div>
-            @if ($data)
+            @if (!$data)
             <a href="/user/borrow-book" class="btn btn-success float-right">Borrow</a>
             @endif
           </div>

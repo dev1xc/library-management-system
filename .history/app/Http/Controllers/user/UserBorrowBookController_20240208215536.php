@@ -106,13 +106,13 @@ class UserBorrowBookController extends Controller
         $data1,
         $data2
       ];
-      return view('user.function.borrow-book.history-detail', compact('data', 'data1', 'data2', 'dataBorrow'));
+      return view('user.functions.borrow.detail', compact('data', 'data1', 'data2', 'dataBorrow'));
     }else{
       $data1 = Book::where('id', $ids[0])->first();
       $data = [
         $data1,
       ];
-      return view('user.function.borrow-book.history-detail', compact('data', 'data1', 'dataBorrow'));
+      return view('admin.functions.borrow.detail', compact('data', 'data1', 'dataBorrow'));
     }
   }
 }

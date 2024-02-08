@@ -62,14 +62,16 @@ class BookController extends Controller
     if (!empty($file)) {
       $data['image'] = $file->getClientOriginalName();
     }
-    if (Book::findOrFail($id)->update($data)) {
+    if (Book::create($data)) {
       if (!empty($file)) {
         $file->move('upload/book/image', $file->getClientOriginalName());
       }
-      return back()->with('success', 'Success');
+      return redirect('/admin/book')->with('success', 'Thanh Cong');
     } else {
       return back()->with("error", "Error");
     }
+    Book::findOrFail($id)->update($data);
+    return back();
   }
   public function delete($id)
   {

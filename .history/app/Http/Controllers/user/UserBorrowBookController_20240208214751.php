@@ -8,7 +8,6 @@ use App\Models\BookLanguage;
 use App\Models\BorrowDetail;
 use App\Models\Category;
 use App\Models\Publisher;
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -86,33 +85,6 @@ class UserBorrowBookController extends Controller
     return back()->with('success','Information has send to Admin');
   }
   public function history() {
-    $dataS = BorrowDetail::where('id_user', Auth::user()->id)->orderBy("id", "desc")->paginate(5);
-    $dataUser = User::all();
-    $dataBook = Book::all();
-    $data = [];
-    foreach ($dataS as $key => $value) {
-      $data[$value['id']] = $value->toArray();
-    }
-    return view("user.function.borrow-book.history", compact("dataS", "dataUser", "dataBook"));
-  }
-  public function getDetail($id)
-  {
-    $dataBorrow = BorrowDetail::findOrFail($id);
-    $ids = explode('|', $dataBorrow['id_book']);
-    if (count($ids) == 2) {
-      $data1 = Book::where('id', $ids[0])->first();
-      $data2 = Book::where('id', $ids[1])->first();
-      $data = [
-        $data1,
-        $data2
-      ];
-      return view('user.function.borrow-book.history-detail', compact('data', 'data1', 'data2', 'dataBorrow'));
-    }else{
-      $data1 = Book::where('id', $ids[0])->first();
-      $data = [
-        $data1,
-      ];
-      return view('user.function.borrow-book.history-detail', compact('data', 'data1', 'dataBorrow'));
-    }
+    $data = BorrowDetail::where('id_user', Auth::user()->id)->orderBy('created_at','desc')->paginate()
   }
 }

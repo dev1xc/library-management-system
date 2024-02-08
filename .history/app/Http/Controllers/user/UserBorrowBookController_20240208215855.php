@@ -93,7 +93,7 @@ class UserBorrowBookController extends Controller
     foreach ($dataS as $key => $value) {
       $data[$value['id']] = $value->toArray();
     }
-    return view("user.function.borrow-book.history", compact("dataS", "dataUser", "dataBook"));
+    return view("user.function.borrow-book.history-detail", compact("dataS", "dataUser", "dataBook"));
   }
   public function getDetail($id)
   {
@@ -106,7 +106,7 @@ class UserBorrowBookController extends Controller
         $data1,
         $data2
       ];
-      return view('user.function.borrow-book.history-detail', compact('data', 'data1', 'data2', 'dataBorrow'));
+      return view('user.functions.borrow.detail', compact('data', 'data1', 'data2', 'dataBorrow'));
     }else{
       $data1 = Book::where('id', $ids[0])->first();
       $data = [

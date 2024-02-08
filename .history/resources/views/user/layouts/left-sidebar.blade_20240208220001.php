@@ -19,7 +19,7 @@
         <li class="sidebar-item">
           <a class="sidebar-link sidebar-link" href="/user/borrow-detail" aria-expanded="false">
             <i class="mdi mdi-account-network"></i>
-            <span class="hide-menu">Cart</span>
+            <span class="hide-menu">Borrow Detail</span>
           </a>
         </li>
         <li class="sidebar-item">
