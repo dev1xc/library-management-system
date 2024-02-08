@@ -39,6 +39,7 @@
     @if (session('success'))
       <div class="alert alert-success">{{ session('success') }}</div>
     @endif
+      <div class="col-sm-12">
         @if ($dataBorrow->status == 0)
         <a href="/admin/borrow-confirm/{{ $dataBorrow->id }}" class="btn btn-success">Confirm</a>
         @elseif ($dataBorrow->status == 1)
@@ -46,6 +47,8 @@
         @elseif ($dataBorrow->status == 2)
         <div class="alert alert-success">Refund</div>
         @endif
+      </div>
+    </div>
     <!-- ============================================================== -->
     <!-- Start Page Content -->
     <!-- ============================================================== -->

@@ -46,6 +46,7 @@
         @elseif ($dataBorrow->status == 2)
         <div class="alert alert-success">Refund</div>
         @endif
+      </div>
     <!-- ============================================================== -->
     <!-- Start Page Content -->
     <!-- ============================================================== -->
