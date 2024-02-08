@@ -42,10 +42,10 @@
           </a>
         </li>
         <li class="sidebar-item">
-          <a class="sidebar-link sidebar-link" href="/admin/borrow-book"
+          <a class="sidebar-link sidebar-link" href="/admin/history"
             aria-expanded="false">
             <i class="mdi mdi-account-network"></i>
-            <span class="hide-menu">Borrow Book</span>
+            <span class="hide-menu">Book Language</span>
           </a>
         </li>
       </ul>

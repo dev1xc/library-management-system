@@ -82,7 +82,7 @@ Route::group(['prefix'=>'admin','middleware' => ['admin']],function () {
 Route::group(['prefix'=>'admin','middleware' => ['admin']],function () {
   Route::get('borrow-book', [BorrowBookController::class, 'index']);
   Route::get('borrow-detail/{id}', [BorrowBookController::class, 'getDetail']);
-  Route::get('borrow-confirm/{id}', [BorrowBookController::class, 'confirm']);
+  Route::get('borrow-confirm/{id}', [BorrowBookController::class, 'getDetail']);
 });
 
 //USER

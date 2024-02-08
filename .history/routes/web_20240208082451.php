@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\admin\BookController;
 use App\Http\Controllers\admin\BookLanguageController;
-use App\Http\Controllers\admin\BorrowBookController;
 use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\admin\ProfileController;
 use App\Http\Controllers\admin\PublisherController;
@@ -80,9 +79,7 @@ Route::group(['prefix'=>'admin','middleware' => ['admin']],function () {
   Route::get('delete-book-language/{id}', [BookLanguageController::class, 'delete']);
 });
 Route::group(['prefix'=>'admin','middleware' => ['admin']],function () {
-  Route::get('borrow-book', [BorrowBookController::class, 'index']);
-  Route::get('borrow-detail/{id}', [BorrowBookController::class, 'getDetail']);
-  Route::get('borrow-confirm/{id}', [BorrowBookController::class, 'confirm']);
+  Route::get('borrow-book', [BookLanguageController::class, 'index']);
 });
 
 //USER

@@ -1,0 +1,39 @@
+<?php
+
+namespace App\Http\Controllers\admin;
+
+use App\Http\Controllers\Controller;
+use App\Models\Book;
+use App\Models\BorrowDetail;
+use App\Models\User;
+use Illuminate\Http\Request;
+
+class BorrowBookController extends Controller
+{
+  //
+  public function __construct()
+  {
+    $this->middleware("auth");
+  }
+  public function index()
+  {
+    $dataS = BorrowDetail::paginate(5);
+    $dataUser = User::all();
+    $dataBook = Book::all();
+    $data = [];
+    foreach ($dataS as $key => $value) {
+      $data[$value['id']] = $value->toArray();
+    }
+    return view("admin.functions.borrow.index", compact("dataS","dataUser","dataBook"));
+  }
+  public function getDetail($id) {
+    $dataBorrow = BorrowDetail::findOrFail($id);
+    $ids = explode('|', $dataBorrow['id_book']);
+    $data1 = Book::where('id', $ids[0])->first();
+    $data2 = Book::where('id', $ids[1])->first();
+    $data = [
+      [...data1]
+    ];
+    return view('admin.functions.borrow.detail', compact('data','data1','data2'));
+  }
+}
